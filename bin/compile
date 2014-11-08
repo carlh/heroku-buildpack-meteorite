@@ -115,6 +115,8 @@ VENDORED_METEOR="$(mktmpdir meteor)"
 curl https://install.meteor.com | HOME="$VENDORED_METEOR" /bin/sh | indent
 echo "Meteor installed" | indent
 
+run_npm "install fibers -g"
+
 echo "Installing packages" | indent
 HOME="$BUILD_DIR" meteor build | indent
 echo "Building meteor bundle" | indent
