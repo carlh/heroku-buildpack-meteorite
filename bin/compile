@@ -76,7 +76,7 @@ if [ -f "${BUILD_DIR}/nodeversion" ]; then
 fi
 # add a warning if no version of node specified
 if [ "$requested_node_ver" == "" ]; then
-  requested_node_ver="0.10.29"
+  requested_node_ver="0.10.33"
   echo
   echo "No version of Node.js specified in nodeversion, using '${requested_node_ver}'" | indent
   echo
@@ -104,10 +104,10 @@ export CPPPATH="$INCLUDE_PATH"
 ############################################
 # install meteorite
 ############################################
-echo "-----> Installing meteorite with npm"
+#echo "-----> Installing meteorite with npm"
 
-run_npm "install meteorite -g"
-echo "Meteorite installed" | indent
+#run_npm "install mrt -g"
+#echo "Meteor installed" | indent
 
 METEOR_BUILD_DIR="$BUILD_DIR/.meteor/heroku_build"
 mkdir -p "$HOME"
@@ -124,7 +124,7 @@ curl https://install.meteor.com | HOME="$VENDORED_METEOR" /bin/sh | indent
 echo "Meteor installed" | indent
 
 echo "Installing packages" | indent
-HOME="$BUILD_DIR" mrt install --force | indent
+HOME="$BUILD_DIR" meteor install --force | indent
 echo "Building meteor bundle" | indent
 HOME="$VENDORED_METEOR" "$VENDORED_METEOR"/.meteor/meteor bundle "$CACHE_DIR"/bundle.tar.gz 2>&1 | indent
 
