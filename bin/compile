@@ -101,14 +101,6 @@ export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"
 
 
-############################################
-# install meteorite
-############################################
-#echo "-----> Installing meteorite with npm"
-
-#run_npm "install mrt -g"
-#echo "Meteor installed" | indent
-
 METEOR_BUILD_DIR="$BUILD_DIR/.meteor/heroku_build"
 mkdir -p "$HOME"
 ############################################
@@ -124,7 +116,7 @@ curl https://install.meteor.com | HOME="$VENDORED_METEOR" /bin/sh | indent
 echo "Meteor installed" | indent
 
 echo "Installing packages" | indent
-HOME="$BUILD_DIR" meteor install --force | indent
+HOME="$BUILD_DIR" meteor build | indent
 echo "Building meteor bundle" | indent
 HOME="$VENDORED_METEOR" "$VENDORED_METEOR"/.meteor/meteor bundle "$CACHE_DIR"/bundle.tar.gz 2>&1 | indent
 
